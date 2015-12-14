@@ -34,12 +34,29 @@ app.get('/dogs/:id', function(req, res){
 });
 
 // ---CREATE--- //
-app.post('/dogs', function(req, res){
+app.post('/dogs/new', function(req, res){
   api.dog.create(req.body.name, req.body.breed)
   .then(function(results){
     res.json(results);
   });
 });
+
+// ---UPDATE--- //
+app.put('/dogs/:id', function(req,res){
+  api.dog.update(req.params.id, req.body.name, req.body.breed)
+  .then(function(results){
+    res.json(results);
+  });
+});
+
+// ---DELETE--- //
+
+app.delete('/dogs/:id', function(req,res){
+  api.dog.delete(req.params.id)
+  .then(function(results){
+    res.json(results);
+  })
+})
 
 
 

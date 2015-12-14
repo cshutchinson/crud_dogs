@@ -36,6 +36,12 @@ module.exports = {
     },
     read: function(id){
       return runQuery('SELECT * from dogs where dogs.id=$1', [id]);
+    },
+    update: function(id, name, breed){
+      return runQuery('UPDATE dogs SET name=$2, breed=$3 WHERE id=$1', [id, name, breed]);
+    },
+    delete: function(id){
+      return runQuery('DELETE from dogs where dogs.id=$1', [id]);
     }
   }
 }
